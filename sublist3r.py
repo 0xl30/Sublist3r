@@ -80,7 +80,7 @@ def banner():
                 |____/ \__,_|_.__/|_|_|___/\__|____/|_|%s%s
 
                 # Coded By Ahmed Aboul-Ela - @aboul3la
-                # Recoded By Ryan Eka 0xL30
+                # Recoded By Ryan Aka 0xL30
     """ % (R, W, Y))
 
 
