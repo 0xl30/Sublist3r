@@ -333,8 +333,8 @@ class YahooEnum(enumratorBaseThreaded):
         return
 
     def extract_domains(self, resp):
-        link_regx2 = re.compile('<span class=" fz-.*? fw-m fc-12th wr-bw.*?">(.*?)</span>')
-        link_regx = re.compile('<span class="txt"><span class=" cite fw-xl fz-15px">(.*?)</span>')
+        link_regx2 = re.compile(r'<span class=" fz-.*? fw-m fc-12th wr-bw.*?">(.*?)</span>')
+        link_regx = re.compile(r'<span class="txt"><span class=" cite fw-xl fz-15px">(.*?)</span>')
         links_list = []
         try:
             links = link_regx.findall(resp)
@@ -385,7 +385,7 @@ class AskEnum(enumratorBaseThreaded):
 
     def extract_domains(self, resp):
         links_list = list()
-        link_regx = re.compile('<p class="web-result-url">(.*?)</p>')
+        link_regx = re.compile(r'<p class="web-result-url">(.*?)</p>')
         try:
             links_list = link_regx.findall(resp)
             for link in links_list:
@@ -429,8 +429,8 @@ class BingEnum(enumratorBaseThreaded):
 
     def extract_domains(self, resp):
         links_list = list()
-        link_regx = re.compile('<li class="b_algo"><h2><a href="(.*?)"')
-        link_regx2 = re.compile('<div class="b_title"><h2><a href="(.*?)"')
+        link_regx = re.compile(r'<li class="b_algo"><h2><a href="(.*?)"')
+        link_regx2 = re.compile(r'<div class="b_title"><h2><a href="(.*?)"')
         try:
             links = link_regx.findall(resp)
             links2 = link_regx2.findall(resp)
@@ -476,7 +476,7 @@ class BaiduEnum(enumratorBaseThreaded):
         links = list()
         found_newdomain = False
         subdomain_list = []
-        link_regx = re.compile('<a.*?class="c-showurl".*?>(.*?)</a>')
+        link_regx = re.compile(r'<a.*?class="c-showurl".*?>(.*?)</a>')
         try:
             links = link_regx.findall(resp)
             for link in links:
@@ -543,7 +543,7 @@ class NetcraftEnum(enumratorBaseThreaded):
         return
 
     def get_next(self, resp):
-        link_regx = re.compile('<a.*?href="(.*?)">Next Page')
+        link_regx = re.compile(r'<a.*?href="(.*?)">Next Page')
         link = link_regx.findall(resp)
         url = 'http://searchdns.netcraft.com' + link[0]
         return url
@@ -579,7 +579,7 @@ class NetcraftEnum(enumratorBaseThreaded):
 
     def extract_domains(self, resp):
         links_list = list()
-        link_regx = re.compile('<a class="results-table__host" href="(.*?)"')
+        link_regx = re.compile(r'<a class="results-table__host" href="(.*?)"')
         try:
             links_list = link_regx.findall(resp)
             for link in links_list:
@@ -638,7 +638,7 @@ class DNSdumpster(enumratorBaseThreaded):
         return self.get_response(resp)
 
     def get_csrftoken(self, resp):
-        csrf_regex = re.compile('<input type="hidden" name="csrfmiddlewaretoken" value="(.*?)">', re.S)
+        csrf_regex = re.compile(r'<input type="hidden" name="csrfmiddlewaretoken" value="(.*?)">', re.S)
         token = csrf_regex.findall(resp)[0]
         return token.strip()
 
@@ -657,7 +657,7 @@ class DNSdumpster(enumratorBaseThreaded):
 
     def extract_domains(self, resp):
         tbl_regex = re.compile(r'<a name="hostanchor"><\/a>Host Records.*?<table.*?>(.*?)</table>', re.S)
-        link_regex = re.compile('<td class="col-md-4">(.*?)<br>', re.S)
+        link_regex = re.compile(r'<td class="col-md-4">(.*?)<br>', re.S)
         links = []
         try:
             results_tbl = tbl_regex.findall(resp)[0]
@@ -787,7 +787,7 @@ class CrtSearch(enumratorBaseThreaded):
         return self.subdomains
 
     def extract_domains(self, resp):
-        link_regx = re.compile('<TD>(.*?)</TD>')
+        link_regx = re.compile(r'<TD>(.*?)</TD>')
         try:
             links = link_regx.findall(resp)
             for link in links:
