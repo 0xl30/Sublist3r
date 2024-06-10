@@ -19,10 +19,10 @@ git clone https://github.com/aboul3la/Sublist3r.git
 nano .bashrc Or .zshrc then add export VIRUSTOTAL_TOKEN=your_api_key_here
 and reload the .bashrc or zshrc file (simply close terminal and open)
 ## Fix 
-'''
-[!] Error: Virustotal probably now is blocking our requests
-SyntaxWarning: invalid escape sequence Python3
-'''
+
+1) [!] Error: Virustotal probably now is blocking our requests
+2) SyntaxWarning: invalid escape sequence Python3
+
 ## Recommended Python Version:
 
 Sublist3r currently supports **Python 2** and **Python 3**.
